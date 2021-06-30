@@ -47,18 +47,18 @@ theta <- matrix(c(0.2,1,1), 1, 3) # 0.2,1,1
 tic()
 rep <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, q, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
 plot(rep$reg_bar, type = "l")
-rep_50 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 25, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
+rep_50 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 50, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
 plot(rep_50$reg_bar, type = "l")
-rep_100 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 50, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
+rep_100 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 100, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
 plot(rep_100$reg_bar, type = "l")
-rep_200 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 100, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
-plot(rep_200$reg_bar, type = "l")
+rep_250 <- RepeatBatchBayesianOptimization(query_m, nEval, X, theta, XX, YY, theta_data, res, 250, version, xmin, xmax, nFeatures, M, lambda, nTrials, n_0, opt)
+plot(rep_250$reg_bar, type = "l")
 toc()
-plot(rep$reg_bar, type = "l", ylim = c(min(rep$reg_bar, rep_50$reg_bar,  rep_100$reg_bar, rep_200$reg_bar),
-                                        max(rep$reg_bar, rep_50$reg_bar, rep_100$reg_bar, rep_200$reg_bar)),
+plot(rep$reg_bar, type = "l", ylim = c(min(rep$reg_bar, rep_50$reg_bar,  rep_100$reg_bar, rep_250$reg_bar),
+                                        max(rep$reg_bar, rep_50$reg_bar, rep_100$reg_bar, rep_250$reg_bar)),
      xlab = "n", ylab = "Mean Average Regret")
 lines(rep_50$reg_bar, type = "l", lty = 2)
 lines(rep_100$reg_bar, lty = 3)
-lines(rep_200$reg_bar, lty = 4)
+lines(rep_250$reg_bar, lty = 4)
 legend("topright", legend = c("Q=1","Q=25","Q=50", "Q=100"), lty = c(1,2,3,4))
 
